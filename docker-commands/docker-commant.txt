@@ -1,9 +1,23 @@
+1st step to run application
+- open the docker desktop
+- run this command
+  `````````````````
+  docker run --name blog-db-1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=changemeinprod! -e POSTGRES_DB=postgres -p 5432:5432 -d postgres:latest
+  `````````````````````
+
+
+
+
+
 # check running image
 - docker ps
 
 # RUN the docker to connect to postgres
 docker run --name blog-db-1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=changemeinprod! -e POSTGRES_DB=postgres -p 5432:5432 -d postgres:latest
 
-# KILL or REMOVE the image in docker
+# kill image
+- docker kill [ID of the image you can get it from docker ps]
+
+# REMOVE the image in docker
 - docker stop blog-db-1
 - docker rm blog-db-1
