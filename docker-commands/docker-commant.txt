@@ -8,6 +8,7 @@
   -------------
 
 to stop the images [the 2 id's is not static it could change so if you encounter an error check the correct id with "docker ps" command]
+- docker-compose stop
 - docker stop 8675078c293d c9981b51b437
 
 
