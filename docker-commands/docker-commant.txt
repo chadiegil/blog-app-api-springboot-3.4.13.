@@ -1,6 +1,6 @@
 1st step to run application
 - open the docker desktop
-- docker compose start
+- docker-compose start
 
 -  use below command if no image exist | run this command [-d flag is use to run the docker image as background]
   ``````````````
