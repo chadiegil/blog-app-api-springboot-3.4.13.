@@ -1,3 +1,6 @@
+# check running image
+- docker ps
+
 # RUN the docker to connect to postgres
 docker run --name blog-db-1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=changemeinprod! -e POSTGRES_DB=postgres -p 5432:5432 -d postgres:latest
 
