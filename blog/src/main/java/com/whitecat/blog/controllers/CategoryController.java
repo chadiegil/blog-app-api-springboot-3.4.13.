@@ -1,7 +1,6 @@
 package com.whitecat.blog.controllers;
 
 import com.whitecat.blog.domain.dtos.CategoryDto;
-import com.whitecat.blog.domain.entities.Category;
 import com.whitecat.blog.mappers.CategoryMapper;
 import com.whitecat.blog.services.CategoryService;
 import lombok.RequiredArgsConstructor;
