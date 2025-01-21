@@ -1,12 +1,12 @@
 1st step to run application
 - open the docker desktop
-- run this command
-  `````````````````
-  docker run --name blog-db-1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=changemeinprod! -e POSTGRES_DB=postgres -p 5432:5432 -d postgres:latest
-  `````````````````````
+- run this command [-d flag is use to run the docker image as background]
+  ``````````````
+  docker-compose up -d
+  -------------
 
-
-
+to stop the images [the 2 id's is not static it could change so if you encounter an error check the correct id with "docker ps" command]
+- docker stop 8675078c293d c9981b51b437
 
 
 # check running image
@@ -21,3 +21,5 @@ docker run --name blog-db-1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=chang
 # REMOVE the image in docker
 - docker stop blog-db-1
 - docker rm blog-db-1
+- docker  stop blog-adminer-1
+- docker rm blog-adminer-1
