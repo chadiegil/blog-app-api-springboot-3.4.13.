@@ -5,6 +5,8 @@ services:
       - "5432:5432"
     restart: always
     environment:
+      POSTGRES_DB: blog
+      POSTGRES_USER: whitecat
       POSTGRES_PASSWORD: changemeinprod!
 
   adminer:
