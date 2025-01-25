@@ -1,21 +1,26 @@
 package com.whitecat.blog.mappers;
 
+import com.whitecat.blog.domain.CreatePostRequest;
+import com.whitecat.blog.domain.UpdatePostRequest;
 import com.whitecat.blog.domain.dtos.AuthorDto;
 import com.whitecat.blog.domain.dtos.CategoryDto;
+import com.whitecat.blog.domain.dtos.CreatePostRequestDto;
 import com.whitecat.blog.domain.dtos.PostDto;
 import com.whitecat.blog.domain.dtos.TagDto;
+import com.whitecat.blog.domain.dtos.UpdatePostRequestDto;
 import com.whitecat.blog.domain.entities.Category;
 import com.whitecat.blog.domain.entities.Post;
 import com.whitecat.blog.domain.entities.Tag;
 import com.whitecat.blog.domain.entities.User;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-23T11:14:51+0800",
+    date = "2025-01-25T12:15:43+0800",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.5 (Oracle Corporation)"
 )
 @Component
@@ -32,6 +37,7 @@ public class PostMapperImpl implements PostMapper {
         postDto.author( userToAuthorDto( post.getAuthor() ) );
         postDto.category( categoryToCategoryDto( post.getCategory() ) );
         postDto.tags( tagSetToTagDtoSet( post.getTags() ) );
+        postDto.status( post.getStatus() );
         postDto.id( post.getId() );
         postDto.title( post.getTitle() );
         postDto.content( post.getContent() );
@@ -39,6 +45,47 @@ public class PostMapperImpl implements PostMapper {
         postDto.createdAt( post.getCreatedAt() );
 
         return postDto.build();
+    }
+
+    @Override
+    public CreatePostRequest toCreatePostRequest(CreatePostRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        CreatePostRequest.CreatePostRequestBuilder createPostRequest = CreatePostRequest.builder();
+
+        createPostRequest.title( dto.getTitle() );
+        createPostRequest.content( dto.getContent() );
+        createPostRequest.categoryId( dto.getCategoryId() );
+        Set<UUID> set = dto.getTagIds();
+        if ( set != null ) {
+            createPostRequest.tagIds( new LinkedHashSet<UUID>( set ) );
+        }
+        createPostRequest.status( dto.getStatus() );
+
+        return createPostRequest.build();
+    }
+
+    @Override
+    public UpdatePostRequest toUpdatePostRequest(UpdatePostRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        UpdatePostRequest.UpdatePostRequestBuilder updatePostRequest = UpdatePostRequest.builder();
+
+        updatePostRequest.id( dto.getId() );
+        updatePostRequest.title( dto.getTitle() );
+        updatePostRequest.content( dto.getContent() );
+        updatePostRequest.categoryId( dto.getCategoryId() );
+        Set<UUID> set = dto.getTagIds();
+        if ( set != null ) {
+            updatePostRequest.tagIds( new LinkedHashSet<UUID>( set ) );
+        }
+        updatePostRequest.status( dto.getStatus() );
+
+        return updatePostRequest.build();
     }
 
     protected AuthorDto userToAuthorDto(User user) {

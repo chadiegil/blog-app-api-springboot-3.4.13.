@@ -24,8 +24,8 @@ public class TagController {
     @GetMapping
     public ResponseEntity<List<TagDto>> getAllTags(){
         List<Tag> tags = tagService.getTags();
-        List<TagDto> tagRespons = tags.stream().map(tagMapper::toTagResponse).toList();
-        return ResponseEntity.ok(tagRespons);
+        List<TagDto> tagResponse = tags.stream().map(tagMapper::toTagResponse).toList();
+        return ResponseEntity.ok(tagResponse);
     }
 
     @PostMapping
